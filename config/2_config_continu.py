@@ -1,4 +1,6 @@
 import pickle
+import gymnasium as gym
+import highway_env
 
 config_dict = {
     "observation": {
@@ -27,11 +29,17 @@ config_dict = {
     "screen_height": 150,
     "centering_position": [0.3, 0.5],
     "scaling": 5.5,
-    "show_trajectories": True,
+    "show_trajectories": False,
     "render_agent": True,
     "offscreen_rendering": False,
     "disable_collision_checks": False,
 }
 
-with open("config_continu.pkl", "wb") as f:
+with open("2-highway-continuous-config.pkl", "wb") as f:
     pickle.dump(config_dict, f)
+
+env = gym.make("highway-fast-v0", render_mode="human")
+env.unwrapped.configure(config_dict)
+env.reset()
+while True:
+    env.step([0,0])
