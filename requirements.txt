@@ -1,3 +1,7 @@
 gymnasium
 pygame
 highway-env
+jupyter
+scikit-learn
+torch
+tqdm
