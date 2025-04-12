@@ -39,5 +39,7 @@ with open("2-racetrack-continuous-config.pkl", "wb") as f:
 env = gym.make("racetrack-v0", render_mode="human")
 env.unwrapped.configure(config_dict)
 env.reset()
-while True:
-    env.step([0,0])
+done = 0
+while not done:
+    obs, reward, terminated, truncated, _ = env.step([0,0])
+    done = terminated or truncated
